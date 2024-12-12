@@ -18,7 +18,7 @@ class MovieService(
         return movieRepository.save(movie)
     }
 
-    fun getMovie(id: Int?): Optional<Movie> {
+    fun getMovie(id: Int): Optional<Movie> {
         return movieRepository.findById(id!!)
     }
 
