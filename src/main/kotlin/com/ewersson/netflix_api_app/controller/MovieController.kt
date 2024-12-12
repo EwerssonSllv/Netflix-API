@@ -38,6 +38,17 @@ class MovieController(
         return ResponseEntity.ok(movie)
     }
 
+    // Update information about the movie
+    @PutMapping("/{id}")
+    fun updateMovie(@PathVariable id: Int, @RequestBody updatedBook: Movie): ResponseEntity<Movie> {
+        val movie: Movie = movieService.updateMovie(id, updatedBook)
+        return ResponseEntity.ok<Movie>(movie)
+    }
 
-
+    // Delete movie
+    @DeleteMapping("/{id}")
+    fun deleteMovie(@PathVariable id: Int): ResponseEntity<Void> {
+        movieService.deleteMovie(id)
+        return ResponseEntity.noContent().build()
+    }
 }
