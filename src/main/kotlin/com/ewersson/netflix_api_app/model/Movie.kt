@@ -10,8 +10,6 @@ import lombok.Setter
 
 @Entity
 @Table(name = "movies")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 data class Movie(
@@ -41,7 +39,39 @@ data class Movie(
     private var cast: String,
 
     @Column(name = "genders", nullable = false)
-    private var genders: String,
+    private var genders: String
     ) {
+
+    fun getId(): Int = id
+    fun getTitle(): String = title
+    fun getImage(): String = image
+    fun getCover(): String = cover
+    fun getDescription(): String = description
+    fun getCast(): String = cast
+    fun getGenders(): String = genders
+
+    fun setTitle(newTitle: String) {
+        title = newTitle
+    }
+
+    fun setImage(newImage: String) {
+        image = newImage
+    }
+
+    fun setCover(newCover: String) {
+        cover = newCover
+    }
+
+    fun setDescription(newDescription: String) {
+        description = newDescription
+    }
+
+    fun setCast(newCast: String) {
+        cast = newCast
+    }
+
+    fun setGenders(newGenders: String) {
+        genders = newGenders
+    }
 
 }
