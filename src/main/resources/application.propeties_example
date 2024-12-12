@@ -1,0 +1,16 @@
+spring.application.name=
+
+spring.output.ansi.enabled=ALWAYS
+
+server.port=
+
+spring.datasource.url=
+spring.datasource.username=
+spring.datasource.password=
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+# Configuration JWT
+api.security.token.secret=
