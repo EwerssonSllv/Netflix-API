@@ -19,11 +19,11 @@ class MovieService(
     }
 
     fun getMovie(id: Int): Optional<Movie> {
-        return movieRepository.findById(id!!)
+        return movieRepository.findById(id)
     }
 
     fun getAllMovies(): List<Movie> {
-        return movieRepository!!.findAll()
+        return movieRepository.findAll()
     }
 
     fun deleteMovie(id: Int) {
@@ -39,9 +39,7 @@ class MovieService(
         movie.setCover(updateMovie.getCover())
         movie.setDescription(updateMovie.getDescription())
         movie.setCast(updateMovie.getCast())
-        movie.setGenders(updateMovie.getGenders())
         return movieRepository.save(movie)
     }
-
 
 }

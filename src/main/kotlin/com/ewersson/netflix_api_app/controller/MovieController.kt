@@ -1,7 +1,6 @@
 package com.ewersson.netflix_api_app.controller
 
 import com.ewersson.netflix_api_app.model.Movie
-import com.ewersson.netflix_api_app.repository.MovieRepository
 import com.ewersson.netflix_api_app.service.MovieService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -12,10 +11,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("movies")
 class MovieController(
     @Autowired
-    private val movieService : MovieService,
-
-    @Autowired
-    private val movieRepository : MovieRepository
+    private val movieService: MovieService
 ) {
 
     // Create new movie
@@ -42,7 +38,7 @@ class MovieController(
     @PutMapping("/{id}")
     fun updateMovie(@PathVariable id: Int, @RequestBody updatedBook: Movie): ResponseEntity<Movie> {
         val movie: Movie = movieService.updateMovie(id, updatedBook)
-        return ResponseEntity.ok<Movie>(movie)
+        return ResponseEntity.ok(movie)
     }
 
     // Delete movie

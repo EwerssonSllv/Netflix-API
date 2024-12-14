@@ -1,12 +1,10 @@
 package com.ewersson.netflix_api_app.model
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
 import lombok.AllArgsConstructor
-import lombok.Getter
 import lombok.NoArgsConstructor
-import lombok.Setter
-
 
 @Entity
 @Table(name = "movies")
@@ -38,17 +36,17 @@ data class Movie(
     @Column(name = "cast", nullable = false)
     private var cast: String,
 
-    @Column(name = "genders", nullable = false)
-    private var genders: String
-    ) {
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    @JsonBackReference
+    var category: Category? = null
+) {
 
-    fun getId(): Int = id
     fun getTitle(): String = title
     fun getImage(): String = image
     fun getCover(): String = cover
     fun getDescription(): String = description
     fun getCast(): String = cast
-    fun getGenders(): String = genders
 
     fun setTitle(newTitle: String) {
         title = newTitle
@@ -68,10 +66,6 @@ data class Movie(
 
     fun setCast(newCast: String) {
         cast = newCast
-    }
-
-    fun setGenders(newGenders: String) {
-        genders = newGenders
     }
 
 }
