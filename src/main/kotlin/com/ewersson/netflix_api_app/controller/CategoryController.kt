@@ -1,6 +1,6 @@
 package com.ewersson.netflix_api_app.controller
 
-import com.ewersson.netflix_api_app.model.Category
+import com.ewersson.netflix_api_app.model.movie.Category
 import com.ewersson.netflix_api_app.repository.CategoryRepository
 import com.ewersson.netflix_api_app.service.CategoryService
 import org.springframework.beans.factory.annotation.Autowired

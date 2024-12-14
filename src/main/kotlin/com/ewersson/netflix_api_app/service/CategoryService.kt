@@ -1,7 +1,7 @@
 package com.ewersson.netflix_api_app.service
 
-import com.ewersson.netflix_api_app.model.Category
-import com.ewersson.netflix_api_app.model.Movie
+import com.ewersson.netflix_api_app.model.movie.Category
+import com.ewersson.netflix_api_app.model.movie.Movie
 import com.ewersson.netflix_api_app.repository.CategoryRepository
 import com.ewersson.netflix_api_app.repository.MovieRepository
 import com.ewersson.netflix_api_app.service.exception.ObjectNotFoundException

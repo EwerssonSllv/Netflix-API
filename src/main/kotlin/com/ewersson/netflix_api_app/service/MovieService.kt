@@ -1,6 +1,6 @@
 package com.ewersson.netflix_api_app.service
 
-import com.ewersson.netflix_api_app.model.Movie
+import com.ewersson.netflix_api_app.model.movie.Movie
 import com.ewersson.netflix_api_app.repository.MovieRepository
 import com.ewersson.netflix_api_app.service.exception.ObjectNotFoundException
 import org.springframework.beans.factory.annotation.Autowired

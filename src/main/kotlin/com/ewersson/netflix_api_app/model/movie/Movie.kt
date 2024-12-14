@@ -1,4 +1,4 @@
-package com.ewersson.netflix_api_app.model
+package com.ewersson.netflix_api_app.model.movie
 
 import com.fasterxml.jackson.annotation.JsonBackReference
 import jakarta.persistence.*
