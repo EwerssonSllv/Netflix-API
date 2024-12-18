@@ -1,16 +1,19 @@
-spring.application.name=
+spring.application.name=netflix-api-app
 
 spring.output.ansi.enabled=ALWAYS
 
-server.port=
+server.port= Your choice
 
-spring.datasource.url=
+spring.datasource.url=jdbc:mysql://mysql-db:3306/Your-database
 spring.datasource.username=
 spring.datasource.password=
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 
-spring.jpa.hibernate.ddl-auto=update
+
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.jpa.hibernate.ddl-auto=none
 spring.jpa.show-sql=true
 
 # Configuration JWT
-api.security.token.secret=
+api.security.token.secret=${JWT_SECRET:}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -125,6 +125,12 @@
 			<version>6.0.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+			<groupId>org.jetbrains.kotlin</groupId>
+			<artifactId>kotlin-allopen</artifactId>
+			<version>${kotlin.version}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -143,9 +149,26 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			<!-- Kotlin Maven Plugin -->
+
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
+				<version>${kotlin.version}</version>
+				<executions>
+					<execution>
+						<id>compile</id>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>test-compile</id>
+						<goals>
+							<goal>test-compile</goal>
+						</goals>
+					</execution>
+				</executions>
 				<configuration>
 					<args>
 						<arg>-Xjsr305=strict</arg>
@@ -153,6 +176,7 @@
 					<compilerPlugins>
 						<plugin>spring</plugin>
 						<plugin>jpa</plugin>
+						<plugin>all-open</plugin>
 					</compilerPlugins>
 					<pluginOptions>
 						<option>all-open:annotation=jakarta.persistence.Entity</option>
@@ -174,6 +198,8 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+
+
 	</build>
 
 </project>

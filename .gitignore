@@ -33,3 +33,5 @@ build/
 .vscode/
 
 application.propeties
+docker-compose.yml
+Dockerfile

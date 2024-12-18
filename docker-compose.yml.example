@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0 # Official mysql image
+    container_name: mysql-db # You can enter a name of your choice, but you will need to change the others.
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: # The database you placed in mysql (from this image)
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - springboot-mysql
+
+  app:
+    image: myapp-image # You will create this image using your own image build code
+    container_name: # You can enter a name of your choice, but you will need to change the others.
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db(the 'db' container):3306/(Your database)
+      SPRING_DATASOURCE_USERNAME:
+      SPRING_DATASOURCE_PASSWORD:
+    depends_on:
+      - db # Your code will need the 'db'
+    networks:
+      - springboot-mysql
+
+volumes:
+  mysql-data:
+
+networks:
+  springboot-mysql:
