@@ -1,7 +1,9 @@
 package com.ewersson.netflix_api_app.controller
 
+import com.ewersson.netflix_api_app.configs.TokenService
 import com.ewersson.netflix_api_app.model.movie.Category
 import com.ewersson.netflix_api_app.repository.CategoryRepository
+import com.ewersson.netflix_api_app.service.AuthorizationService
 import com.ewersson.netflix_api_app.service.CategoryService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
@@ -11,10 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("categories")
 class CategoryController(
     @Autowired
-    private val categoryService: CategoryService,
-
-    @Autowired
-    private val categoryRepository: CategoryRepository
+    private val categoryService: CategoryService
 ) {
 
     // Create new category
@@ -37,6 +36,7 @@ class CategoryController(
         val categories: List<Category> = categoryService.getAllCategories()
         return ResponseEntity.ok(categories)
     }
+
 
     // Update category information
     @PutMapping("/{id}")

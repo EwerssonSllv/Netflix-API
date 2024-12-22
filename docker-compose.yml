@@ -1,7 +1,7 @@
 services:
   db:
     image: mysql:8.0
-    container_name: mysql-db
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: netflixdb
@@ -13,13 +13,13 @@ services:
       - springboot-mysql
 
   app:
-    image: myapp-image
+    image: netflix
     container_name: netflix
     build: .
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/netflixdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/netflixdb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
