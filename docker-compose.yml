@@ -13,7 +13,7 @@ services:
       - springboot-mysql
 
   app:
-    image: netflix
+    image: netflix    # docker build -t netflix .
     container_name: netflix
     build: .
     ports:
