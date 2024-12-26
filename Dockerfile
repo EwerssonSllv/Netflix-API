@@ -11,4 +11,5 @@ RUN apt-get update && apt-get install -y curl \
 WORKDIR /app
 COPY --from=builder /app/target/*.jar /app/app.jar
 EXPOSE 8081
-ENTRYPOINT ["wait-for-it.sh", "mysql:3306", "--", "java", "-jar", "/app/app.jar"]
+ENTRYPOINT ["wait-for-it.sh", "mysql:3306", "-t", "60", "--", "java", "-jar", "/app/app.jar"]
+
