@@ -19,13 +19,14 @@ services:
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/netflixdb
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/netflixdb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
       - db
     networks:
       - springboot-mysql
+    restart: on-failure
 
 volumes:
   mysql-data:
@@ -33,4 +34,3 @@ volumes:
 networks:
   springboot-mysql:
     driver: bridge
-
