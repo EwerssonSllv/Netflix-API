@@ -32,3 +32,5 @@ volumes:
 
 networks:
   springboot-mysql:
+    driver: bridge
+
