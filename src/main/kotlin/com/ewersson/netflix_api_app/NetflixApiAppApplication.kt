@@ -7,5 +7,6 @@ import org.springframework.boot.runApplication
 class NetflixApiAppApplication
 
 fun main(args: Array<String>) {
+
 	runApplication<NetflixApiAppApplication>(*args)
 }

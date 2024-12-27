@@ -13,13 +13,13 @@ services:
       - springboot-mysql
 
   app:
-    image: netflix-app    # docker build -t netflix-app .
+    image: netflix    # docker build -t netflix-app .
     container_name: netflix
     build: .
     ports:
       - "8081:8081"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://${DATABASE_HOST:localhost}:${DATABASE_PORT:3306}/${DATABASE_NAME:netflixdb}
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/netflixdb
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
     depends_on:
