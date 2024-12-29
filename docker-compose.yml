@@ -1,19 +1,6 @@
 services:
-  db:
-    image: mysql:8.0
-    container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: netflixdb
-    ports:
-      - "3307:3306"
-    volumes:
-      - mysql-data:/var/lib/mysql
-    networks:
-      - springboot-mysql
-
   app:
-    image: netflix-api-app    # docker build -t netflix-app .
+    image: app    # docker build -t netflix-app .
     container_name: netflix
     build: .
     ports:

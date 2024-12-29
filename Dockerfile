@@ -1,8 +1,15 @@
+FROM maven:3.9.1-eclipse-temurin-17 AS build
+WORKDIR /app
+COPY . .
+ENV LANG C.UTF-8
+RUN mvn clean package -DskipTests
+
 FROM openjdk:21-jdk-slim AS builder
 RUN apt-get update && apt-get install -y maven
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
+
 
 FROM openjdk:21-jdk-slim
 RUN apt-get update && apt-get install -y curl \
