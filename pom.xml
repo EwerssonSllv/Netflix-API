@@ -131,6 +131,7 @@
 			<artifactId>kotlin-allopen</artifactId>
 			<version>${kotlin.version}</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -149,8 +150,8 @@
 					</excludes>
 				</configuration>
 			</plugin>
-			<!-- Kotlin Maven Plugin -->
 
+			<!-- Kotlin Maven Plugin -->
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
 				<artifactId>kotlin-maven-plugin</artifactId>
@@ -197,9 +198,10 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+
+
+
 		</plugins>
-
-
 	</build>
 
 </project>
