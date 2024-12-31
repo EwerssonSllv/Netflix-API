@@ -42,11 +42,13 @@ data class Movie(
     var category: Category? = null
 ) {
 
+    fun getId(): Int = id
     fun getTitle(): String = title
     fun getImage(): String = image
     fun getCover(): String = cover
     fun getDescription(): String = description
     fun getCast(): String = cast
+
 
     fun setTitle(newTitle: String) {
         title = newTitle

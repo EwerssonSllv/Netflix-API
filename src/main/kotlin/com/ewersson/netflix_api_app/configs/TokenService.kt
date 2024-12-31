@@ -20,7 +20,7 @@ class TokenService {
         try {
             val algorithm = Algorithm.HMAC256(secret)
             val token = JWT.create()
-                .withIssuer("auth-api")
+                .withIssuer("netflix-api")
                 .withSubject(user.getUserLogin())
                 .withExpiresAt(genExpirationDate())
                 .sign(algorithm)
@@ -34,7 +34,7 @@ class TokenService {
         try {
             val algorithm = Algorithm.HMAC256(secret)
             return JWT.require(algorithm)
-                .withIssuer("auth-api")
+                .withIssuer("netflix-api")
                 .build()
                 .verify(token)
                 .subject
