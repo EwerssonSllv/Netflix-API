@@ -47,4 +47,25 @@ class MovieController(
         movieService.deleteMovie(id)
         return ResponseEntity.noContent().build()
     }
+
+    // Add similar movie
+    @PostMapping("/{id}/similar")
+    fun addSimilarMovie(@PathVariable id: Int, @RequestBody similarMovieId: Int): ResponseEntity<Movie> {
+        val updatedMovie = movieService.addSimilarMovie(id, similarMovieId)
+        return ResponseEntity.ok(updatedMovie)
+    }
+
+    // Get similar movies
+    @GetMapping("/{id}/similar")
+    fun getSimilarMovies(@PathVariable id: Int): ResponseEntity<List<Movie>> {
+        val similarMovies = movieService.getSimilarMovies(id)
+        return ResponseEntity.ok(similarMovies)
+    }
+
+    // Remove similar movie
+    @DeleteMapping("/{id}/similar/{similarMovieId}")
+    fun removeSimilarMovie(@PathVariable id: Int, @PathVariable similarMovieId: Int): ResponseEntity<Movie> {
+        val updatedMovie = movieService.removeSimilarMovie(id, similarMovieId)
+        return ResponseEntity.ok(updatedMovie)
+    }
 }

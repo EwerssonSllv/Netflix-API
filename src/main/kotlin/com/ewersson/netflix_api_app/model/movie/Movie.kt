@@ -39,7 +39,13 @@ data class Movie(
     @ManyToOne
     @JoinColumn(name = "category_id")
     @JsonBackReference
-    var category: Category? = null
+    var category: Category? = null,
+
+    @ManyToOne
+    @JoinColumn(name = "similar_movie_id")
+    @JsonBackReference
+    var similarMovie: SimilarMovie? = null
+
 ) {
 
     fun getId(): Int = id
@@ -48,7 +54,6 @@ data class Movie(
     fun getCover(): String = cover
     fun getDescription(): String = description
     fun getCast(): String = cast
-
 
     fun setTitle(newTitle: String) {
         title = newTitle
