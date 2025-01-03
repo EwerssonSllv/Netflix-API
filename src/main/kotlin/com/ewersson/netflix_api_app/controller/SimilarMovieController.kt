@@ -28,9 +28,4 @@ class SimilarMovieController(private val similarMovieService: SimilarMovieServic
         return ResponseEntity.ok(updatedGroup)
     }
 
-    @GetMapping("/{similarMovieId}")
-    fun getMoviesInSimilarGroup(@PathVariable similarMovieId: Int): ResponseEntity<List<Movie>> {
-        val movies = similarMovieService.getMoviesInSimilarGroup(similarMovieId)
-        return ResponseEntity.ok(movies)
-    }
 }

@@ -18,7 +18,7 @@ class SimilarMovieService(
         val movie = movieRepository.findById(movieId)
             .orElseThrow { RuntimeException("Movie not found") }
         movie.similarMovie = similarMovie
-        similarMovie.movies.add(movie)
+        similarMovie.movies?.add(movie)
         movieRepository.save(movie)
         return similarMovieRepository.save(similarMovie)
     }
@@ -28,15 +28,9 @@ class SimilarMovieService(
             .orElseThrow { RuntimeException("SimilarMovie not found") }
         val movie = movieRepository.findById(movieId)
             .orElseThrow { RuntimeException("Movie not found") }
-        similarMovie.movies.remove(movie)
+        similarMovie.movies?.remove(movie)
         movie.similarMovie = null
         movieRepository.save(movie)
         return similarMovieRepository.save(similarMovie)
-    }
-
-    fun getMoviesInSimilarGroup(similarMovieId: Int): List<Movie> {
-        val similarMovie = similarMovieRepository.findById(similarMovieId)
-            .orElseThrow { RuntimeException("SimilarMovie not found") }
-        return similarMovie.movies
     }
 }
