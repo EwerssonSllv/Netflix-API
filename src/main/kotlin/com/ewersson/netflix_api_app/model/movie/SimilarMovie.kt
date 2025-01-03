@@ -10,7 +10,7 @@ data class SimilarMovie(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
-    private var id: Int,
+    private var id: Int? = null,
 
     @OneToMany(mappedBy = "similarMovie", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonManagedReference
