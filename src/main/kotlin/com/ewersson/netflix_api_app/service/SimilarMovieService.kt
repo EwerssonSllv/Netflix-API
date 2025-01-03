@@ -4,6 +4,7 @@ import com.ewersson.netflix_api_app.model.movie.Movie
 import com.ewersson.netflix_api_app.model.movie.SimilarMovie
 import com.ewersson.netflix_api_app.repository.MovieRepository
 import com.ewersson.netflix_api_app.repository.SimilarMovieRepository
+import jakarta.persistence.EntityNotFoundException
 import org.springframework.stereotype.Service
 
 @Service
@@ -12,15 +13,22 @@ class SimilarMovieService(
     private val movieRepository: MovieRepository
 ) {
 
-    fun addMovieToSimilarGroup(similarMovieId: Int, movieId: Int): SimilarMovie {
+    fun addSimilarMovies(similarMovieId: Int, movieId: Int): SimilarMovie {
         val similarMovie = similarMovieRepository.findById(similarMovieId)
-            .orElseThrow { RuntimeException("SimilarMovie not found") }
+            .orElseThrow { EntityNotFoundException("SimilarMovie not found") }
+
         val movie = movieRepository.findById(movieId)
-            .orElseThrow { RuntimeException("Movie not found") }
+            .orElseThrow { EntityNotFoundException("Movie not found") }
+
+        // Associando o filme ao grupo de filmes similares
         movie.similarMovie = similarMovie
-        similarMovie.movies?.add(movie)
-        movieRepository.save(movie)
-        return similarMovieRepository.save(similarMovie)
+        similarMovie.movies.add(movie)
+
+        // Salvando as alterações
+        movieRepository.save(movie)  // Atualiza o filme
+        similarMovieRepository.save(similarMovie)  // Atualiza o grupo de filmes similares
+
+        return similarMovie
     }
 
     fun removeMovieFromSimilarGroup(similarMovieId: Int, movieId: Int): SimilarMovie {

@@ -15,7 +15,7 @@ class SimilarMovieController(private val similarMovieService: SimilarMovieServic
         @PathVariable similarMovieId: Int,
         @PathVariable movieId: Int
     ): ResponseEntity<SimilarMovie> {
-        val updatedGroup = similarMovieService.addMovieToSimilarGroup(similarMovieId, movieId)
+        val updatedGroup = similarMovieService.addSimilarMovies(similarMovieId, movieId)
         return ResponseEntity.ok(updatedGroup)
     }
 
