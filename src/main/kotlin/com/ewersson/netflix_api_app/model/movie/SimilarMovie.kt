@@ -8,12 +8,7 @@ import jakarta.validation.constraints.NotBlank
 @Table(name = "similar_movies")
 data class SimilarMovie(
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true)
-    var id: Int = 0,
-
     @OneToMany(mappedBy = "similarMovie", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonManagedReference
     var movies: MutableList<Movie>? = null
-){ fun getInt(): Int = id}
+){}
