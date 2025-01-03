@@ -21,4 +21,4 @@ data class Category(
     @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonManagedReference
     val movies: MutableList<Movie> = mutableListOf()
-){ fun getInt(): Int = id}
+){ fun getInt(): Int = id }
