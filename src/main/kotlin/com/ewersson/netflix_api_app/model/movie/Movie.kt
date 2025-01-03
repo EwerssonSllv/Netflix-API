@@ -41,10 +41,7 @@ data class Movie(
     @JsonBackReference
     var category: Category? = null,
 
-    @ManyToOne
-    @JoinColumn(name = "similar_movie_id")
-    @JsonBackReference
-    var similarMovie: SimilarMovie? = null
+
 
 ) {
 
