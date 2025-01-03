@@ -43,8 +43,6 @@ class SecurityConfigurations {
                     .requestMatchers(HttpMethod.GET, "/categories/{id}").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.PUT, "/categories/{categoryName}/add/{movieId}").hasRole("ADMIN")
                     .requestMatchers(HttpMethod.DELETE, "/categories/{id}").hasRole("ADMIN")
-                    .requestMatchers(HttpMethod.POST, "/similar/{similarMovieId}/add/{movieId})").permitAll()
-                    .requestMatchers(HttpMethod.DELETE, "/similar/{similarMovieId}/remove/{movieId}").permitAll()
                     .anyRequest().authenticated()
             }
             .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter::class.java)
