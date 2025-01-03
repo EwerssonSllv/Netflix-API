@@ -15,5 +15,5 @@ data class SimilarMovie(
 
     @OneToMany(mappedBy = "similarMovie", cascade = [CascadeType.ALL], orphanRemoval = true)
     @JsonManagedReference
-    val movies: MutableList<Movie> = mutableListOf()
+    var movies: MutableList<Movie>? = null
 ){ fun getInt(): Int = id}
